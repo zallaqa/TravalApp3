@@ -1,0 +1,16 @@
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px
+);
+
+@mixin respond-to($caawin) {
+  @if map-has-key($caawin, $caawin) {
+    @media (min-width: map-get($caawin, $caawin)) {
+      @content;
+    }
+  } @else {
+    @error "Invalid breakpoint name: #{$caawin}. Available breakpoints: #{map-keys($caawin)}.";
+  }
+}
